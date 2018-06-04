@@ -1,0 +1,102 @@
+
+Discarded input sections
+
+ .data          0x0000000000000000        0x0 start.o
+ .bss           0x0000000000000000        0x0 start.o
+ .text          0x0000000000000000        0x0 user.o
+ .data          0x0000000000000000        0x0 user.o
+ .bss           0x0000000000000000        0x0 user.o
+ .text.unlikely._Z6printfPKcz
+                0x0000000000000000        0x0 user.o
+ .text.unlikely.main_func
+                0x0000000000000000        0x0 user.o
+ .eh_frame      0x0000000000000000       0x64 user.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x0000000000001074                . = (0x1000 + SIZEOF_HEADERS)
+
+.data           0x0000000000001074      0xf8c
+                0x0000000000001074        0x1 BYTE 0x2a
+                0x0000000000002000                . = ALIGN (0x1000)
+ *fill*         0x0000000000001075      0xf8b 
+                0x0000000000002000                stack_top = .
+ *(.data)
+ *(.bss)
+
+.igot.plt       0x0000000000002000        0x0
+ .igot.plt      0x0000000000002000        0x0 start.o
+
+.text           0x0000000000002000        0xc
+                0x0000000000002000                . = ALIGN (0x1000)
+ *(.text)
+ .text          0x0000000000002000        0xc start.o
+                0x0000000000002000                __start
+LOAD start.o
+LOAD user.o
+OUTPUT(user.nova.debug elf32-i386)
+
+.iplt           0x0000000000002010        0x0
+ .iplt          0x0000000000002010        0x0 start.o
+
+.text._Z6printfPKcz
+                0x000000000000200c       0x26
+ .text._Z6printfPKcz
+                0x000000000000200c       0x26 user.o
+                0x000000000000200c                printf(char const*, ...)
+
+.text.main_func
+                0x0000000000002032       0x19
+ .text.main_func
+                0x0000000000002032       0x19 user.o
+                0x0000000000002032                main_func
+
+.rodata.str1.1  0x000000000000204b       0x10
+ .rodata.str1.1
+                0x000000000000204b       0x10 user.o
+
+.rel.dyn        0x000000000000205c        0x0
+ .rel.iplt      0x000000000000205c        0x0 start.o
+ .rel.text      0x000000000000205c        0x0 start.o
+
+.debug_line     0x0000000000000000       0xc5
+ .debug_line    0x0000000000000000       0x3e start.o
+ .debug_line    0x000000000000003e       0x87 user.o
+
+.debug_info     0x0000000000000000      0x12b
+ .debug_info    0x0000000000000000       0x5a start.o
+ .debug_info    0x000000000000005a       0xd1 user.o
+
+.debug_abbrev   0x0000000000000000       0xd2
+ .debug_abbrev  0x0000000000000000       0x14 start.o
+ .debug_abbrev  0x0000000000000014       0xbe user.o
+
+.debug_aranges  0x0000000000000000       0x48
+ .debug_aranges
+                0x0000000000000000       0x20 start.o
+ .debug_aranges
+                0x0000000000000020       0x28 user.o
+
+.debug_loc      0x0000000000000000       0x34
+ .debug_loc     0x0000000000000000       0x34 user.o
+
+.debug_ranges   0x0000000000000000       0x18
+ .debug_ranges  0x0000000000000000       0x18 user.o
+
+.debug_str      0x0000000000000000      0x1cc
+ .debug_str     0x0000000000000000      0x1cc user.o
+                                        0x1d9 (size before relaxing)
+
+.comment        0x0000000000000000       0x34
+ .comment       0x0000000000000000       0x34 user.o
+                                         0x35 (size before relaxing)
+
+.note.GNU-stack
+                0x0000000000000000        0x0
+ .note.GNU-stack
+                0x0000000000000000        0x0 user.o

@@ -1,0 +1,7 @@
+timeout 0
+default 1
+
+title ECNU
+kernel (nd)/hypervisor-x86_32
+module (nd)/user.nova.debug
+
